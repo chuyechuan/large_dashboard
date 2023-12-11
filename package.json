@@ -1,0 +1,35 @@
+{
+  "name": "large_dashborad",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/charts": "^1.4.3",
+    "@ant-design/icons": "^5.2.6",
+    "@antv/l7": "^2.20.5",
+    "@antv/l7-three": "^2.20.5",
+    "antd": "^5.12.1",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "three": "^0.159.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/three": "^0.159.0",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
