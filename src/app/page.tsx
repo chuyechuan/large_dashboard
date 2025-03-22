@@ -8,13 +8,13 @@ import Left from "@/components/Left";
 export default function Home() {
   return (
     <main className="flex min-h-screen max-h-screen flex-col items-center justify-between overflow-hidden">
+      <Content />
       <Header />
       <div className="w-full flex flex-1 flex-row">
         <Side>
           <Left />
         </Side>
-        <div className="flex flex-1 flex-col">
-          <Content />
+        <div className="flex flex-1 flex-col justify-end">
           <Footer />
         </div>
         <Side>

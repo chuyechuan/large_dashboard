@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Column } from "@ant-design/plots";
+import { Area, Column } from "@ant-design/plots";
 import { Radar } from "@ant-design/charts";
 import Title from "./Title";
 
@@ -185,18 +185,46 @@ const DemoRadar = () => {
   return <Radar {...config} />;
 };
 
+const TimePredict = ({ data }: { data: any }) => {
+  const config = {
+    data,
+    xField: 'date',
+    yField: 'value',
+    style: {
+      fill: 'linear-gradient(-90deg, white 0%, #1890ff 100%)',
+    },
+    axis: {
+      y: { labelFormatter: '~s' },
+    },
+    line: {
+      style: {
+        stroke: '#1890ff',
+        strokeWidth: 5,
+      },
+    },
+  };
+  return <Area {...config} />;
+};
+
 export default () => (
   <div>
-    <Title>
-      <p>标题</p>
-    </Title>
-    <DemoColumn />
-    <Title>
-      <p>标题</p>
-    </Title>
-    <div className="flex flex-row">
-      <DemoRadar />
-      <DemoRadar />
-    </div>
+    <>
+      <Title>
+        <p>时间预测准确率</p>
+      </Title>
+      <TimePredict data={new Array(7).fill(0).map((_, i) => ({
+        date: new Date(`2025-03-01 ${i + 1}:00`).toLocaleString().substring(9, 14),
+        value: Math.random() * 50,
+      }))} />
+    </>
+    <>
+      <Title>
+        <p>偏移时间准确率</p>
+      </Title>
+      <TimePredict data={new Array(7).fill(0).map((_, i) => ({
+        date: new Date(`2025-03-01 ${i + 1}:00`).toLocaleString().substring(9, 14),
+        value: Math.random() * 50,
+      }))} />
+    </>
   </div>
 );
