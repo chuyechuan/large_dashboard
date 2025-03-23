@@ -10,7 +10,7 @@ export default function Home() {
     <main className="flex min-h-screen max-h-screen flex-col items-center justify-between overflow-hidden">
       <Content />
       <Header />
-      <div className="w-full flex flex-1 flex-row">
+      <div className="w-full flex flex-1 flex-row px-7">
         <Side>
           <Left />
         </Side>

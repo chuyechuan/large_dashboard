@@ -1,0 +1,25 @@
+.ant-select-selector {
+    background-color: #ffffff30 !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+.ant-select-selection-item {
+    color: #ffffff;
+}
+
+/* 下拉框背景 */
+:where(.css-dev-only-do-not-override-6j9yrn).ant-select-dropdown {
+    background-color: #ffffff30 !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* 下拉框选中项 */
+:where(.css-dev-only-do-not-override-6j9yrn).ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: #ffffff;
+    background-color: #ffffff30;
+}
+
+.ant-select-item-option-content {
+    color: #ffffff;
+}

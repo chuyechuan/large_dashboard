@@ -1,8 +1,12 @@
 "use client";
 
 import { G2, Gauge, Rose } from "@ant-design/charts";
-import { Pie } from "@ant-design/plots";
+import { Column, Pie } from "@ant-design/plots";
 import Title from "./Title";
+import { Carousel, Select } from "antd";
+import { useState } from "react";
+import Image from "next/image";
+import "./index.css";
 
 const DemoPie = () => {
   const data = [
@@ -214,19 +218,147 @@ const DemoGauge = () => {
   return <Gauge {...config} />;
 };
 
+// 柱状图
+const BarChart = ({ data }: { data: any[] }) => {
+
+  const config = {
+    data,
+    xField: 'type',
+    yField: 'value',
+    style: {
+      height: 240,
+      fill: (originData) => {
+        const val = parseFloat(originData.value);
+        if (val < 0.05) {
+          return '#22CBCC';
+        }
+        return '#2989FF';
+      },
+    },
+    xAxis: {
+      label: {
+        style: {
+          fill: '#ffffff',
+        },
+      },
+    },
+    yAxis: {
+      label: {
+        style: {
+          fill: '#ffffff',
+        },
+      },
+      grid: {
+        line: {
+          style: {
+            stroke: '#eee',
+            lineDash: [4, 5],
+          },
+        },
+      },
+      // grid: null,
+      // tickLine: null,
+    },
+    // label: {
+    //   text: (originData) => {
+    //     const val = parseFloat(originData.value);
+    //     if (val < 0.05) {
+    //       return (val * 100).toFixed(1) + '%';
+    //     }
+    //     return '';
+    //   },
+    //   offset: 10,
+    // },
+    legend: false,
+  };
+  return <Column {...config} />;
+};
+
+// 交通事故数量
+const TrafficAccidents = () => {
+  const data = Array.from({ length: 10 }).map((_, index) => ({
+    type: new Date(`2025-03-0${index + 1}`).toLocaleString().substring(5, 8),
+    value: Math.round(Math.random() * 100),
+  }))
+  return (
+    <div className="backdrop-blur-xl bg-white/10 p-2  rounded-lg overflow-hidden">
+      <Title>
+        <p className="text-white">交通事件数量</p>
+      </Title>
+      <BarChart data={data} />
+    </div>
+  );
+};
+
+// 交通拥堵指数
+const TrafficCongestion = () => {
+  const data = Array.from({ length: 10 }).map((_, index) => ({
+    type: new Date(`2025-03-0${index + 1}`).toLocaleString().substring(5, 8),
+    value: Math.round(Math.random() * 100),
+  }))
+  return (
+    <div className="backdrop-blur-xl bg-white/10 p-2  rounded-lg overflow-hidden">
+      <Title>
+        <p className="text-white">交通拥堵指数</p>
+      </Title>
+      <BarChart data={data} />
+    </div>
+  );
+};
+
+// 交通事件类型
+const TrafficEventTypes = () => {
+  const [value, setValue] = useState('person');
+  const onChange = (currentSlide: number) => {
+    console.log(currentSlide);
+  };
+  const contentStyle = {
+    textAlign: 'center',
+    lineHeight: '160px',
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 500,
+    height: '160px',
+  };
+
+  const selects = [
+    { value: 'person', label: <span>礼让行人</span> },
+    { value: 'illegal_parking', label: <span>违法停车</span> },
+    { value: 'illegal_occupation_of_roads', label: <span>违法占道</span> },
+    { value: 'red_light', label: <span>闯红灯</span> },
+    { value: 'dashed_line', label: <span>实线变道</span> },
+  ]
+  return (
+    <div className="backdrop-blur-xl bg-white/10 p-2  rounded-lg overflow-hidden">
+      <Title>
+        <div className="w-full flex justify-between gap-2">
+          <p className="text-white">交通事件类型</p>
+          <Select
+            options={selects}
+            value={value}
+            onChange={setValue}
+            dropdownStyle={{ width: 200, backgroundColor: '#ffffff30', color: "#ffffff" }}
+          />
+        </div>
+      </Title>
+      <Carousel afterChange={onChange}>
+        {selects.map((item) => item.value === value && (
+          <div key={item.value} className="relative h-[200px]">
+            <Image src="https://www.law966.com/image/jszs/redlight.jpg" fill alt="traffic" />
+            <div className="absolute bottom-0 left-0 w-full text-center text-white backdrop-blur-xl bg-white/10 py-1">{item.label}</div>
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  );
+};
+
 export default () => (
   <>
-    <Title>
-      <p>标题</p>
-    </Title>
-    <DemoPie />
-    <Title>
-      <p>标题</p>
-    </Title>
-    <DemoRose />
-    <Title>
-      <p>标题</p>
-    </Title>
-    <DemoGauge />
+    <div className="flex flex-col gap-2">
+      <TrafficAccidents />
+      <TrafficCongestion />
+      <TrafficEventTypes />
+    </div>
   </>
 );
