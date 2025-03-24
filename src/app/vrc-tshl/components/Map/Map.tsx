@@ -81,7 +81,7 @@ const addMarker = (lng: number, lat: number) => {
   const dom = document.createElement('div');
   dom.style.width = '10px';
   dom.style.height = '20px';
-  dom.style.background = 'url(https://cdn.pixabay.com/photo/2013/07/12/15/05/traffic-lights-149388_1280.png) no-repeat center center / 100% 100%';
+  dom.style.background = 'url(/images/light/green-light.svg) no-repeat center center / 100% 100%';
 
   const marker = new Marker({
     element: dom,
