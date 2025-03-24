@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss'
 
 const config: Config = {
   content: [
@@ -19,9 +20,23 @@ const config: Config = {
       boxShadow: {
         inner: '0 0 0 1px var(--tw-shadow-color)',
         innerBlack: 'inset 0 0 150px 10px #000',
+      },
+      textShadow: {
+       blue: '0 0 10px #1890ff',
       }
     },
   },
-  plugins: [],
+  // plugins: [
+  //   plugin(function ({ matchUtilities, theme }) {
+  //     matchUtilities(
+  //       {
+  //         'text-shadow': (value) => ({
+  //           textShadow: value,
+  //         }),
+  //       },
+  //       { values: theme('textShadow') }
+  //     )
+  //   }),
+  // ],
 }
 export default config

@@ -16,7 +16,7 @@ const SetFaultyTime = ({ color }: { color: string }) => {
       label: <strong>100%</strong>,
     },
   };
-  return <div className="w-full h-26 px-2 backdrop-blur-xl bg-white/10 p-2 rounded-lg overflow-hidden">
+  return <div className="w-56 h-26 px-2 backdrop-blur-xl bg-white/10 p-2 rounded-lg overflow-hidden">
     <Title color={color}>
       <p className="text-white">故障比例</p>
     </Title>
@@ -51,7 +51,7 @@ const Footer = ({ color }: { color: string }) => {
     <div className="mb-4">
       <div className="flex gap-2">
         <SetFaultyTime color={color} />
-        {/* <FutureTrend color={color} /> */}
+        <FutureTrend color={color} />
       </div>
 
       {/* <div className="w-full py-2 overflow-hidden h-60">

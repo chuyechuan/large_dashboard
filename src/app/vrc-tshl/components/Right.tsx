@@ -3,9 +3,9 @@
 import { Area } from "@ant-design/plots";
 import Select from "antd/es/select";
 import { useState } from "react";
-import Title from "./Title";
-import BarChart from "./BarChart";
-import AreaChart from "./AreaChart";
+import Title from "@/components/Title";
+import BarChart from "@/components/BarChart";
+import AreaChart from "@/components/AreaChart";
 
 const TimePredict = ({ color }: { color: string }) => {
   const [value, setValue] = useState('all');
@@ -47,12 +47,11 @@ const Offset = ({ color }: { color: string }) => {
   </div>
 };
 
-
 export default ({ color }: { color: string }) => {
   return (
     <div className="flex flex-col gap-2">
       <TimePredict color={color} />
-      {/* <Offset color={color} /> */}
+      <Offset color={color} />
     </div>
   );
 };

@@ -18,10 +18,10 @@ const scene = new Scene({
 
 scene.on('loaded', () => {
 
-  // 车流
-  // Data.line.forEach((item) => {
-  //   scene.addLayer(addLayer(item.data, item.color));
-  // });
+  Data.line.forEach((item) => {
+    scene.addLayer(addLayer(item.data, item.color));
+  });
+
 
   // 红绿灯
   const markerData = [
@@ -53,28 +53,28 @@ scene.on('loaded', () => {
   scene.addMarkerLayer(markerLayer);
 
   // 交通事故图片弹出层
-  // const { layerPopup, pointLayer } = addPoint([
-  //   {
-  //     lng: 112.87685,
-  //     lat: 28.234131,
-  //     value: 34.71314604052238,
-  //     name: '追尾',
-  //   },
-  //   {
-  //     lng: 112.874859,
-  //     lat: 28.237269,
-  //     value: 34.71314604052238,
-  //     name: '追尾',
-  //   },
-  //   {
-  //     lng: 112.869263,
-  //     lat: 28.239633,
-  //     value: 34.71314604052238,
-  //     name: '追尾',
-  //   },
-  // ]);
-  // scene.addLayer(pointLayer);
-  // scene.addPopup(layerPopup);
+  const { layerPopup, pointLayer } = addPoint([
+    {
+      lng: 112.87685,
+      lat: 28.234131,
+      value: 34.71314604052238,
+      name: '追尾',
+    },
+    {
+      lng: 112.874859,
+      lat: 28.237269,
+      value: 34.71314604052238,
+      name: '追尾',
+    },
+    {
+      lng: 112.869263,
+      lat: 28.239633,
+      value: 34.71314604052238,
+      name: '追尾',
+    },
+  ]);
+  scene.addLayer(pointLayer);
+  scene.addPopup(layerPopup);
 });
 
 const addMarker = (lng: number, lat: number) => {

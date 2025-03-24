@@ -23,3 +23,7 @@
 .ant-select-item-option-content {
     color: #ffffff;
 }
+
+:where(.css-dev-only-do-not-override-6j9yrn).ant-slider .ant-slider-mark-text {
+    color: #ffffff;
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Map from "@/components/Map/Map";
+import Map from "./Map/Map";
 
 const Side = ({ direction }: any) => {
   return <div className={`absolute top-0 ${direction === "l" ? "left-0" : "right-0"} w-96 h-full bg-gradient-to-${direction} from-black/0 to-black`}></div>;
