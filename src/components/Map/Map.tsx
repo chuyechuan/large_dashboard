@@ -27,26 +27,95 @@ scene.on('loaded', () => {
   const markerData = [
     {
       lng: 112.876531,
-      lat: 28.233516
+      lat: 28.233516,
+      light: '/images/light/red-light.svg',
     },
     {
       lng: 112.874413,
-      lat: 28.234823
+      lat: 28.234823,
+      light: '/images/light/yellow-light.svg',
     },
     {
       lng: 112.872359,
-      lat: 28.235805
+      lat: 28.235805,
+      light: '/images/light/green-light.svg',
     },
     {
       lng: 112.870353,
-      lat: 28.236625
-    }
+      lat: 28.236625,
+      light: '/images/light/green-light.svg',
+    },
+    {
+      lng: 112.866292,
+      lat: 28.238475,
+      light: '/images/light/green-light.svg',
+    },
+    {// 以下欣盛路
+      lng: 112.875237,
+      lat: 28.231055,
+      light: '/images/light/green-light.svg',
+    },
+    {
+      lng: 112.87202,
+      lat: 28.23207,
+      light: '/images/light/green-light.svg',
+    },
+    {
+      lng: 112.869731,
+      lat: 28.2327,
+      light: '/images/light/green-light.svg',
+    },
+    {
+      lng: 112.869731,
+      lat: 28.2327,
+      light: '/images/light/green-light.svg',
+    },
+    {// 四个红绿灯
+      lng: 112.864275,
+      lat: 28.234682,
+      light: '/images/light/green-light.svg',
+    },
+    {
+      lng: 112.864157,
+      lat: 28.23478,
+      light: '/images/light/red-light.svg',
+    },
+    {
+      lng: 112.864,
+      lat: 28.234752,
+      light: '/images/light/red-light.svg',
+    },
+    {
+      lng: 112.864087,
+      lat: 28.234587,
+      light: '/images/light/green-light.svg',
+    },
+    {// 岳兴路
+      lng: 112.87082,
+      lat: 28.234192,
+      light: '/images/light/green-light.svg',
+    },
+    {
+      lng: 112.867312,
+      lat: 28.235729,
+      light: '/images/light/green-light.svg',
+    },
+    {// 1
+      lng: 112.86509,
+      lat: 28.236465,
+      light: '/images/light/green-light.svg',
+    },
+    {// 2
+      lng: 112.864989,
+      lat: 28.236576,
+      light: '/images/light/green-light.svg',
+    },
   ]
 
   const markerLayer = new MarkerLayer();
 
   markerData.forEach((item) => {
-    const marker = addMarker(item.lng, item.lat);
+    const marker = addMarker(item.lng, item.lat, item.light);
     markerLayer.addMarker(marker);
   });
 
@@ -77,11 +146,11 @@ scene.on('loaded', () => {
   // scene.addPopup(layerPopup);
 });
 
-const addMarker = (lng: number, lat: number) => {
+const addMarker = (lng: number, lat: number, light: string) => {
   const dom = document.createElement('div');
   dom.style.width = '10px';
   dom.style.height = '20px';
-  dom.style.background = 'url(https://cdn.pixabay.com/photo/2013/07/12/15/05/traffic-lights-149388_1280.png) no-repeat center center / 100% 100%';
+  dom.style.background = `url(${light}) no-repeat center center / 100% 100%`;
 
   const marker = new Marker({
     element: dom,

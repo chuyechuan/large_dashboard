@@ -17,7 +17,7 @@ const Content = () => {
       {/* <Image src="/images/map_kv.svg" width={800} height={200} alt="map" /> */}
       <div className="flex-1 flex flex-col relative z-2">
         <div className="w-full h-full bg-green-500 z-1 absolute top-0 left-0">
-          {/* <Map /> */}
+          <Map />
         </div>
         {/* <Horizon direction="t" /> */}
         <div className={`absolute top-0 w-full h-28 bg-gradient-to-t from-black/0 to-black`}></div>

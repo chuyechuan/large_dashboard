@@ -143,8 +143,8 @@ export default ({ color }: { color: string }) => (
       {/* <TrafficAccidents color={color} />
       <TrafficCongestion color={color} />
       <TrafficEventTypes color={color} /> */}
-      <RealTimePassingRate color={color} />
       <FaultyTime color={color} />
+      <RealTimePassingRate color={color} />
     </div>
   </>
 );

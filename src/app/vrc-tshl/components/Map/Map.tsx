@@ -21,78 +21,23 @@ scene.on('loaded', () => {
   Data.line.forEach((item) => {
     scene.addLayer(addLayer(item.data, item.color));
   });
-
-
-  // 红绿灯
-  const markerData = [
-    {
-      lng: 112.876531,
-      lat: 28.233516
-    },
-    {
-      lng: 112.874413,
-      lat: 28.234823
-    },
-    {
-      lng: 112.872359,
-      lat: 28.235805
-    },
-    {
-      lng: 112.870353,
-      lat: 28.236625
-    }
-  ]
-
-  const markerLayer = new MarkerLayer();
-
-  markerData.forEach((item) => {
-    const marker = addMarker(item.lng, item.lat);
-    markerLayer.addMarker(marker);
-  });
-
-  scene.addMarkerLayer(markerLayer);
-
-  // 交通事故图片弹出层
-  const { layerPopup, pointLayer } = addPoint([
-    {
-      lng: 112.87685,
-      lat: 28.234131,
-      value: 34.71314604052238,
-      name: '追尾',
-    },
-    {
-      lng: 112.874859,
-      lat: 28.237269,
-      value: 34.71314604052238,
-      name: '追尾',
-    },
-    {
-      lng: 112.869263,
-      lat: 28.239633,
-      value: 34.71314604052238,
-      name: '追尾',
-    },
-  ]);
-  scene.addLayer(pointLayer);
-  scene.addPopup(layerPopup);
 });
 
-const addMarker = (lng: number, lat: number) => {
-  const dom = document.createElement('div');
-  dom.style.width = '10px';
-  dom.style.height = '20px';
-  dom.style.background = 'url(/images/light/green-light.svg) no-repeat center center / 100% 100%';
-
-  const marker = new Marker({
-    element: dom,
-  }).setLnglat({ lng, lat });
-
-  return marker;
-};
-
-const addLayer = (data: any, color: string) => {
+const addLayer = (coordinates: number[][], color: string) => {
   const layer = new LineLayer({})
-    .source(data)
+    .source({
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {},
+          "geometry": {
+            "type": "LineString",
+            "coordinates": coordinates
+          }
+        }
+      ]
+    })
     .size(3)
     .shape('line')
     .texture('arrow')
@@ -110,41 +55,6 @@ const addLayer = (data: any, color: string) => {
       borderColor: '#fff', // 默认为 #ccc
     });
   return layer;
-};
-
-const addPoint = (data: any) => {
-  const pointLayer = new PointLayer({});
-  pointLayer
-    .source(
-      data,
-      {
-        parser: {
-          type: 'json',
-          x: 'lng',
-          y: 'lat',
-        },
-      },
-    )
-    .color('value', ['#FFCCC6', '#CF1421'])
-    .size(10)
-    .shape('circle');
-
-  const dom = document.createElement('div');
-  dom.style.width = '150px';
-  dom.style.height = '110px';
-  dom.style.background = 'url(https://p2.itc.cn/q_70/images01/20210915/f3e3413e3d954b08b8d0246bad7e382f.jpeg) no-repeat center center / 100% 100%';
-
-  const layerPopup = new LayerPopup({
-    items: [
-      {
-        layer: pointLayer,
-        customContent: dom,
-        title: ({ name }) => name,
-      },
-    ],
-  });
-
-  return { layerPopup, pointLayer };
 };
 
 // after:content-['']

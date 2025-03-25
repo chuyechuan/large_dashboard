@@ -49,10 +49,10 @@ const FutureTrend = ({ color }: { color: string }) => {
 const Footer = ({ color }: { color: string }) => {
   return (
     <div className="mb-4">
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         <SetFaultyTime color={color} />
         <FutureTrend color={color} />
-      </div>
+      </div> */}
 
       {/* <div className="w-full py-2 overflow-hidden h-60">
         <Title>

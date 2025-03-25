@@ -16,6 +16,15 @@ const scene = new Scene({
   }),
 });
 
+scene.addImage(
+  '01',
+  '/images/collision.svg',
+);
+// scene.addImage(
+//   '02',
+//   'https://gw.alipayobjects.com/zos/basement_prod/7aa1f460-9f9f-499f-afdf-13424aa26bbf.svg',
+// );
+
 scene.on('loaded', () => {
 
   // 交通事故图片弹出层
@@ -81,9 +90,7 @@ const addLayer = (data: any, color: string) => {
 const addPoint = (data: any) => {
   const pointLayer = new PointLayer({});
   pointLayer
-    .source(
-      data,
-      {
+    .source(data, {
         parser: {
           type: 'json',
           x: 'lng',
@@ -91,9 +98,9 @@ const addPoint = (data: any) => {
         },
       },
     )
-    .color('value', ['#FFCCC6', '#CF1421'])
-    .size(10)
-    .shape('circle');
+    // .color('value', ['#FFCCC6', '#CF1421'])
+    .size(25)
+    .shape('name', ['01', '02']);
 
   const dom = document.createElement('div');
   dom.style.width = '150px';
