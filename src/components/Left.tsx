@@ -215,7 +215,7 @@ const DemoGauge = () => {
 };
 
 export default () => (
-  <>
+  <div className="backdrop-blur-sm bg-black/40">
     <Title>
       <p>标题</p>
     </Title>
@@ -228,5 +228,5 @@ export default () => (
       <p>标题</p>
     </Title>
     <DemoGauge />
-  </>
+  </div>
 );

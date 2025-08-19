@@ -187,16 +187,20 @@ const DemoRadar = () => {
 
 export default () => (
   <div>
-    <Title>
-      <p>标题</p>
-    </Title>
-    <DemoColumn />
-    <Title>
-      <p>标题</p>
-    </Title>
-    <div className="flex flex-row">
-      <DemoRadar />
-      <DemoRadar />
+    <div className="backdrop-blur-sm bg-[url(https://cdn.pixabay.com/photo/2025/06/11/07/18/wildlife-9653797_640.jpg)] mask-linear-50 mask-linear-50 mask-linear-from-60% mask-linear-to-80%">
+      <Title>
+        <p>标题</p>
+      </Title>
+      <DemoColumn />
+    </div>
+    <div className="backdrop-blur-sm bg-red-400 mask-linear-50 mask-linear-50 mask-linear-from-60% mask-linear-to-80%">
+      <Title>
+        <p>标题</p>
+      </Title>
+      <div className="flex flex-row">
+        <DemoRadar />
+        <DemoRadar />
+      </div>
     </div>
   </div>
 );
